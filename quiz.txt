@@ -1,0 +1,276 @@
+package wls;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.text.ParseException;
+
+import javax.swing.*;
+import javax.swing.text.MaskFormatter;
+
+public class quiz  extends JPanel{
+	private JTabbedPane tpAbas; //componente que cria abas na janela
+	private JPanel panel, panel1, panel2, panel3, panel4, panel5, panel6;//componente invisivel que agrupa outros componentes dentro dele
+	private JCheckBox ckA1, ckB1, ckC1, ckD1, ckA2, ckB2, ckC2, ckD2,ckA3, ckB3, ckC3, ckD3,ckA4, ckB4, ckC4, ckD4,ckA5, ckB5, ckC5, ckD5;
+	private JButton btfinalizar,btfinalizar2,btfinalizar3, btfinalizar4, btfinalizar5,btresp, bt1;
+	private ButtonGroup btGroup1,btGroup2,btGroup3,btGroup4,btGroup5;
+	private JLabel lb1,lb2,lb3,lb4,lb5,lbnome,lbnum,lbemail;
+	private MaskFormatter msTel;
+	private JTextField tfnome, tfnum, tfemail;
+	private ImageIcon img1;
+	String nome = "";
+	int selecao = 0;
+	public quiz(){
+		inicializarComponentes();
+		definirEventos();	
+	}
+	private void inicializarComponentes(){
+	try {	
+		msTel = new MaskFormatter("(##)####-####");
+		setLayout(null);
+		panel = new JPanel(new GridLayout(10,9));
+		img1 = new ImageIcon("C:\\Users\\DIGITAÇÃO\\Downloads\\ceap2.png");
+		lb1 = new JLabel(img1);			
+		lbnome = new JLabel("Nome: ");
+		tfnome = new JTextField(8);			
+		lbnum = new JLabel("Tell: ");
+		tfnum = new JFormattedTextField(msTel);		
+		lbemail = new JLabel("Email: ");
+		tfemail = new JTextField(5);
+		bt1 = new JButton("Começar");
+		
+		lb1.setBounds(190,0, 50,50 );
+		lbnome.setBounds(10, 30, 70,20 );//setBounds posiciona em (posição x, posição y, comprimento, altura);
+		tfnome.setBounds(50, 30,130,20);		
+		lbnum.setBounds(10, 60, 100,20 );
+		tfnum.setBounds(40, 60,100,20);						
+		lbemail.setBounds(10, 90, 80,20 );
+		tfemail.setBounds(50, 90,100,20);		
+		bt1.setBounds(70,120,100,20);
+		
+		panel.add(lb1);
+		panel.add(lbnome);
+		panel.add(tfnome);	
+		panel.add(lbnum);
+		panel.add(tfnum);
+		panel.add(lbemail);
+		panel.add(tfemail);
+		panel.add(bt1);
+		
+		
+		panel1 = new JPanel(new GridLayout(6,6));
+		lb1 = new JLabel("Quem foi o Campeão do Mundial de 2005?");
+		ckA1 = new JCheckBox("Santos");
+		ckB1 = new JCheckBox("Barcelona");
+		ckC1 = new JCheckBox("Liverpool");
+		ckD1 = new JCheckBox("São Paulo");
+		btGroup1 = new ButtonGroup();
+		btGroup1.add(ckA1);
+		btGroup1.add(ckB1);
+		btGroup1.add(ckC1);
+		btGroup1.add(ckD1);
+		btfinalizar = new JButton("Enviar a Resposta");
+		
+		lb1.setBounds(20,30,130,30);
+		ckA1.setBounds(20,50,130,30);
+		ckB1.setBounds(20,80,130,30);
+		ckC1.setBounds(20,110,130,30);
+		ckD1.setBounds(20,140,130,30);
+		btfinalizar.setBounds(110,170,100,30);
+		
+		panel1.add(lb1);
+		panel1.add(ckA1);
+		panel1.add(ckB1);
+		panel1.add(ckC1);
+		panel1.add(ckD1);
+		panel1.add(btfinalizar);
+		
+		panel2 = new JPanel(new GridLayout(6,6));//como preencher (número de linhas, número de colunas, dintacia no eixo x(opcional), distância no eixo y(opcional));
+		lb2 = new JLabel("Qual é a seleção que possui o maior número de títulos em edições de Copa do Mundo?");
+		ckA2 = new JCheckBox("França");
+		ckB2 = new JCheckBox("Brasil");
+		ckC2 = new JCheckBox("Argentina");
+		ckD2 = new JCheckBox("Alemanha");
+		btGroup2 = new ButtonGroup();
+		btGroup2.add(ckA2);
+		btGroup2.add(ckB2);
+		btGroup2.add(ckC2);
+		btGroup2.add(ckD2);
+		btfinalizar2 = new JButton("Enviar a Resposta");
+
+		lb2.setBounds(20,30,130,30);
+		ckA2.setBounds(20,50,130,30);
+		ckB2.setBounds(20,80,130,30);
+		ckC2.setBounds(20,110,130,30);
+		ckD2.setBounds(20,140,130,30);
+		btfinalizar2.setBounds(110,170,100,30);
+
+		panel2.add(lb2);
+		panel2.add(ckA2);
+		panel2.add(ckB2);
+		panel2.add(ckC2);
+		panel2.add(ckD2);
+		panel2.add(btfinalizar2);
+		
+		panel3 = new JPanel(new GridLayout(6,6)); //dentro do parentese colocar a distância entre os componentes no eixo x e no eixo y
+		lb3 = new JLabel("Quem foi o primeiro jogador brasileiro a ser premiado com a bola de ouro se tornando assim o melhor jogador do mundo?");
+		ckA3 = new JCheckBox("Pelé");
+		ckB3 = new JCheckBox("Kaká");
+		ckC3 = new JCheckBox("Romário");
+		ckD3 = new JCheckBox(" Ronaldo");
+		btGroup3 = new ButtonGroup();
+		btGroup3.add(ckA3);
+		btGroup3.add(ckB3);
+		btGroup3.add(ckC3);
+		btGroup3.add(ckD3);
+		btfinalizar3 = new JButton("Enviar a Resposta");
+
+		lb3.setBounds(20,30,130,30);
+		ckA3.setBounds(20,50,130,30);
+		ckB3.setBounds(20,80,130,30);
+		ckC3.setBounds(20,110,130,30);
+		ckD3.setBounds(20,140,130,30);
+		btfinalizar3.setBounds(110,170,100,30);
+
+		panel3.add(lb3);
+		panel3.add(ckA3);
+		panel3.add(ckB3);
+		panel3.add(ckC3);
+		panel3.add(ckD3);
+		panel3.add(btfinalizar3);
+		
+		panel4 = new JPanel(new GridLayout(6,6));
+		lb4 = new JLabel("Quantos gols Neymar tem em sua carreira profissional?");
+		ckA4 = new JCheckBox("388");
+		ckB4 = new JCheckBox("400");
+		ckC4 = new JCheckBox("440");
+		ckD4 = new JCheckBox(" 536");
+		btGroup4 = new ButtonGroup();
+		btGroup4.add(ckA4);
+		btGroup4.add(ckB4);
+		btGroup4.add(ckC4);
+		btGroup4.add(ckD4);
+		btfinalizar4 = new JButton("Enviar a Resposta");
+
+		lb4.setBounds(20,30,130,30);
+		ckA4.setBounds(20,50,130,30);	
+		ckB4.setBounds(20,80,130,30);
+		ckC4.setBounds(20,110,130,30);
+		ckD4.setBounds(20,140,130,30);
+		btfinalizar4.setBounds(110,170,100,30);
+
+		panel4.add(lb4);
+		panel4.add(ckA4);
+		panel4.add(ckB4);
+		panel4.add(ckC4);
+		panel4.add(ckD4);
+		panel4.add(btfinalizar4);
+
+		panel5 = new JPanel(new GridLayout(6,6));
+		lb5 = new JLabel("Qual time se sagrou campeão na libertadores do ano 2000?");
+		ckA5 = new JCheckBox("Penarol");
+		ckB5 = new JCheckBox("Vasco da Gama");
+		ckC5 = new JCheckBox("Corinthians");
+		ckD5 = new JCheckBox(" Boca Juniors");
+		btGroup5 = new ButtonGroup();
+		btGroup5.add(ckA5);
+		btGroup5.add(ckB5);
+		btGroup5.add(ckC5);
+		btGroup5.add(ckD5);
+		btfinalizar5 = new JButton("Enviar a Resposta");
+
+		lb5.setBounds(20,30,130,30);
+		ckA5.setBounds(20,50,130,30);
+		ckB5.setBounds(20,80,130,30);
+		ckC5.setBounds(20,110,130,30);
+		ckD5.setBounds(20,140,130,30);
+		btfinalizar5.setBounds(110,170,100,30);
+
+		panel5.add(lb5);
+		panel5.add(ckA5);
+		panel5.add(ckB5);
+		panel5.add(ckC5);
+		panel5.add(ckD5);
+		panel5.add(btfinalizar5);
+				
+		panel6 = new JPanel(new FlowLayout());
+		btresp = new JButton("Resultado");
+		btresp.setBounds(110,170,100,30);
+		panel6.add(btresp);
+
+		
+		tpAbas = new JTabbedPane();
+		tpAbas.addTab("Login",panel);
+		tpAbas.addTab("Pergunta 1",panel1);
+		tpAbas.addTab("Pergunta 2",panel2);
+		tpAbas.addTab("Pergunta 3",panel3);
+		tpAbas.addTab("Pergunta 4",panel4);
+		tpAbas.addTab("Pergunta 5",panel5);
+		tpAbas.addTab("Resultado",panel6);
+		
+		tpAbas.setBounds(0,0,560,400);
+		add(tpAbas);
+	 }catch(ParseException erro){
+			erro.printStackTrace();		
+			
+	 }
+	}
+	private void definirEventos(){	
+		btfinalizar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				
+				if(ckD1.isSelected()){ //verifica quais caixas estão selecionadas.
+					selecao += 1;
+				}
+			}
+		});
+		btfinalizar2.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				
+				if(ckB2.isSelected()){ //verifica quais caixas estão selecionadas.
+					selecao += 1;
+				}
+			}
+		});
+		btfinalizar3.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				
+				if(ckC3.isSelected()){ //verifica quais caixas estão selecionadas.
+					selecao += 1;
+					
+				}
+			}
+		});
+		btfinalizar4.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				
+				if(ckA4.isSelected()){ //verifica quais caixas estão selecionadas.
+					selecao += 1;
+					
+				}
+			}
+		});
+		btfinalizar5.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				
+				if(ckD5.isSelected()){ //verifica quais caixas estão selecionadas.
+					selecao += 1;
+					
+				}
+			}
+		});
+		
+		btresp.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent arg0){
+				JOptionPane.showMessageDialog(null,"Oi " +  tfnome.getText()+" Vc acertou: "+selecao);
+				
+			}
+		});
+	}
+	public static void main(String args[]){
+ 		JFrame frame = new JFrame("Botões de Radio");
+		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		 frame.getContentPane().add(new quiz());
+		 frame.setBounds(0,0,580,450);
+		 frame.setVisible(true);
+	 }
+}
